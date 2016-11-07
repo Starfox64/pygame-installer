@@ -9,23 +9,17 @@ def httpGet(url):
 	response = urllib_request.urlopen(url)
 	return response.read().decode('utf-8')
 
-hasPip = False
-
 try:
 	import pip
-	hasPip = True
 except ImportError:
-	pass
-
-if not hasPip:
+	print("README: You do not have pip installed. You will have to run this script again upon completion!")
 	getPip = httpGet("https://bootstrap.pypa.io/get-pip.py")
 	exec(getPip)
-	import pip
 
 arch = platform.architecture()[0]
 wheelUrl = "https://raw.githubusercontent.com/Starfox64/pygame-installer/master/wheels/"
 
-print("You are using Python" + str(sys.version_info[0]) + str(sys.version_info[1]) + " " + arch)
+print("You are using Python" + str(sys.version_info[0]) + str(sys.version_info[1]) + " " + arch + ".")
 
 if sys.version_info[0] == 2 and sys.version_info[1] == 7:
 	if arch == "64bit":
