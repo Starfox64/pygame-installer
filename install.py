@@ -1,20 +1,12 @@
-import platform, sys
+import platform, sys, os, ensurepip
 
-try:
-	import urllib.request as urllib_request
-except ImportError:
-	import urllib2 as urllib_request
-
-def httpGet(url):
-	response = urllib_request.urlopen(url)
-	return response.read().decode('utf-8')
+ensurepip.bootstrap()
 
 try:
 	import pip
 except ImportError:
-	print("README: You do not have pip installed. You will have to run this script again upon completion!")
-	getPip = httpGet("https://bootstrap.pypa.io/get-pip.py")
-	exec(getPip)
+	print("Error: Failed to install pip, make sure you are running this script as admin.")
+	sys.exit()
 
 arch = platform.architecture()[0]
 wheelUrl = "https://raw.githubusercontent.com/Starfox64/pygame-installer/master/wheels/"
@@ -46,6 +38,9 @@ else:
 	print("Pygame only supports Python 27, 34, 35 and 36.")
 	sys.exit()
 
-pip.main(["install", wheelUrl])
+if pip.main(["install", wheelUrl]) == 0:
+	print("Pygame should now be installed.")
+else:
+	print("Something went wrong during the installation of pygame.")
 
-print("If nothing red showed up, Pygame should be installed now.")
+os.system("pause")

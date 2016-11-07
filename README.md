@@ -6,8 +6,8 @@ A small Python script to install the pygame library.
 - Windows
 
 # How To
-- Download [install.py][install] on your computer
-- Execute install.py (As Admin)
+- Download [install.py][install] on your computer (not the whole repo)
+- Execute install.py (**As Admin**)
 - If pip is not installed you will be asked to run the script a second time
 - Profit?
 
