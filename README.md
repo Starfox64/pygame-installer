@@ -1,6 +1,10 @@
 # pygame-installer
 A small Python script to install the pygame library.
 
+# Requirements
+- Python (27, 34, 35, 36)
+- Windows
+
 # How To
 - Download [install.py][install] on your computer
 - Execute install.py (As Admin)
